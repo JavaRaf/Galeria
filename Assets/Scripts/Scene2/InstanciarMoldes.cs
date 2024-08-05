@@ -7,9 +7,11 @@ using System;
 
 public class LoadImage : MonoBehaviour
 {
-    public GameObject model;    
+    public GameObject prefab;    
     public GameObject panel;    
-    public string serverImagesUrl;
+    public string serverImagesUrl = "http://localhost:3000/images";
+
+    public string imagesEndPoint = "http://localhost:3000/uploads";
 
     private List<Texture> images = new List<Texture>();
 
@@ -49,7 +51,7 @@ public class LoadImage : MonoBehaviour
 
             foreach (ImageData imageData in imageDataList.images)
             {
-                string imageUrl = $"http://localhost:3000/uploads/{imageData.filename}"; 
+                string imageUrl = $"{imagesEndPoint}/{imageData.filename}"; 
                 yield return StartCoroutine(DownloadImage(imageUrl));
             }
 
@@ -81,7 +83,7 @@ public class LoadImage : MonoBehaviour
     {
         foreach (Texture texture in images)
         {
-            GameObject instancia = Instantiate(model, panel.transform);
+            GameObject instancia = Instantiate(prefab, panel.transform);
             if (instancia != null)
             {
                 RawImage rawImage = instancia.GetComponent<RawImage>();
