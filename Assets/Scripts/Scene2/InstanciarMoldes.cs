@@ -3,11 +3,12 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class LoadImage : MonoBehaviour
 {
-    public GameObject model;
-    public GameObject panel;
+    public GameObject model;    
+    public GameObject panel;    
     public string serverImagesUrl;
 
     private List<Texture> images = new List<Texture>();
@@ -15,14 +16,16 @@ public class LoadImage : MonoBehaviour
     [System.Serializable]
     public class ImageData
     {
-        public string id;
-        public string name;
-        public string path;
+        public int id;
+        public string filename;
+        public int size;
+        public string created_at;
     }
 
     [System.Serializable]
     public class ImageDataList
     {
+        public string message;
         public List<ImageData> images;
     }
 
@@ -36,19 +39,20 @@ public class LoadImage : MonoBehaviour
         UnityWebRequest request = UnityWebRequest.Get(url);
         yield return request.SendWebRequest();
 
+        Debug.Log("request: " + request);
+
         if (request.result == UnityWebRequest.Result.Success)
         {
             string jsonString = request.downloadHandler.text;
 
-            // Parse o JSON para uma lista de objetos ImageData
-            ImageData[] imageDatas = JsonUtility.FromJson<ImageDataList>("{\"images\":" + jsonString + "}").images.ToArray();
+            ImageDataList imageDataList = JsonUtility.FromJson<ImageDataList>(jsonString);
 
-            foreach (ImageData imageData in imageDatas)
+            foreach (ImageData imageData in imageDataList.images)
             {
-                yield return StartCoroutine(DownloadImage(imageData.path));
+                string imageUrl = $"http://localhost:3000/uploads/{imageData.filename}"; 
+                yield return StartCoroutine(DownloadImage(imageUrl));
             }
 
-            // Após obter todas as texturas, instancia os objetos
             InstanciarObject();
         }
         else

@@ -465,7 +465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 1572960489104564780, guid: 50bbb1051b918784cb2d36f50ab792c5, type: 3}
   panel: {fileID: 1034806558}
-  serverImagesUrl: http://localhost:3000/download
+  serverImagesUrl: http://localhost:3000/images
 --- !u!114 &1034806561
 MonoBehaviour:
   m_ObjectHideFlags: 0
