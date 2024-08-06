@@ -587,15 +587,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 100
-    m_Right: 100
-    m_Top: 100
-    m_Bottom: 100
+    m_Left: 40
+    m_Right: 40
+    m_Top: 10
+    m_Bottom: 40
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 1
   m_CellSize: {x: 384, y: 216}
-  m_Spacing: {x: 50, y: 50}
+  m_Spacing: {x: 40, y: 50}
   m_Constraint: 2
   m_ConstraintCount: 4
 --- !u!114 &1034806562
