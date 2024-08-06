@@ -15,7 +15,7 @@ public class LoadImage : MonoBehaviour
 
     private List<Texture> images = new List<Texture>();
 
-    [System.Serializable]
+    [Serializable]
     public class ImageData
     {
         public int id;
@@ -24,7 +24,7 @@ public class LoadImage : MonoBehaviour
         public string created_at;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class ImageDataList
     {
         public string message;
