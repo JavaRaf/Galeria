@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class FullScreen : MonoBehaviour, IPointerClickHandler
 {
+
     public void OnPointerClick(PointerEventData eventData)
     {
         GameObject fullscrenn = GameObject.FindWithTag("FullImage");
@@ -14,6 +15,8 @@ public class FullScreen : MonoBehaviour, IPointerClickHandler
             {
                 rectTransform.anchoredPosition = Vector2.zero;
 
+                var rawImage = GetComponent<RawImage>().texture;
+                ExitScrenn.ShowImage(rawImage);
             }
  
         }
