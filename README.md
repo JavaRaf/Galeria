@@ -1,19 +1,16 @@
-## Servir WebGL Localmente
+## entre na pasta Web-Gl e execulte os seguintos comandos
 
-Para servir os arquivos WebGL localmente, use um dos seguintes métodos:
-
-### Usando Python 3
-
-Se você estiver usando Python 3, execute o seguinte comando:
 
 ```bash
 python -m http.server 8000
+```
 
+## ou se prefirir 
 
-### usando Node
-npm install -g http-server
-
+```bash
 npx http-server -p 8000
+```
+
 
 
 
